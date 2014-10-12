@@ -1,0 +1,6 @@
+== Sistema de Juras
+Version 0.1
+
+== Instalación
+* ruby 1.9.3 or later (tested with 2.0.0p247)
+* MySQL server

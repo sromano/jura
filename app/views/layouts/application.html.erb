@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang"es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preinscripción a Jura de Gradudos</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <%= yield(:header) %>
+
+    <div class="main">
+
+      <% unless flash[:error].blank? %>
+        <div class="alert alert-danger" role="alert">
+          <strong>Error: </strong> <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <% unless flash[:success].blank? %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="text-muted">Secretaría Académica - Dirección de Alumnos y Graduados <br/> Universidad de Buenos Aires - Facultad de Ciencias Exactas y Naturales </p>
+  </div>
+</body>
+</html>

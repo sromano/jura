@@ -1,0 +1,8 @@
+<tr>
+  <td> <%= inscription.order %> </td>
+  <td> <%= inscription.graduate.careers.map(&:name).join(", ") %> </td>
+  <td> <%= inscription.graduate.last_name %> </td>
+  <td> <%= inscription.graduate.first_name %> </td>
+  <td> <%= inscription.formula.name %> </td>
+  <td> <%= inscription.email %> </td>
+</tr>

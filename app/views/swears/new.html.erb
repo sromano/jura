@@ -1,0 +1,20 @@
+<% if @swear.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h3>La jura no se pudo grabar por los siguientes errores:</h3>
+    <ul>
+    <% @swear.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= bootstrap_form_for @swear do |f| %>
+  <%= f.date_select :inscription_date, start_year: Date.today.year,
+      html: {class: "form-control"} %>
+  <%= f.date_select :swear_date, start_year: Date.today.year,
+      html: {class: "form-control"} %>
+  <%= f.text_field :quota, class: "form-control" %>
+  <%= f.check_box :enabled if @swear.persisted? %>
+  <%= f.submit (@swear.persisted? ? "Grabar Jura" : "Crear Jura"), class: "btn btn-primary" %>
+<% end %>

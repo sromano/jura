@@ -1,0 +1,13 @@
+<div class="alert alert-info" role="alert">
+  <ol>
+  <li> El archivo debe ser de extensión <strong>.xlsx</strong> con las siguientes columnas: Apellido, Nombre, Número de Documento y Carrera.</li>
+  <li> La carga de un nuevo archivo deshabilita a los graduados anteriores</li>
+</div>
+
+<%= form_tag({action: "do_upload"}, {multipart: true}) do %>
+  <div class="form-group">
+    <label for="file">Cargar archivo</label>
+    <%= file_field_tag 'file' %>
+  </div>
+  <button type="submit" class="btn btn-primary">Cargar</button>
+<% end %>

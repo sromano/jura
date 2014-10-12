@@ -1,0 +1,5 @@
+<tr>
+  <td><%= graduate.last_name %> </td>
+  <td><%= graduate.first_name %> </td>
+  <td><%= graduate.careers.map(&:name).join("<br>").html_safe %> </td>
+</tr>

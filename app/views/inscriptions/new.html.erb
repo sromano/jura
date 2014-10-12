@@ -1,0 +1,51 @@
+<p class="lead">
+  <strong> Paso 2: </strong> Completá tus datos
+</p>
+
+<div class="row form-group">
+  <div class="col-md-3 text-right">
+    <strong>Fecha de Jura</strong>
+  </div>
+  <div class="col-md-9">
+    <%=(l @swear.swear_date).capitalize %>
+  </div>
+</div>
+
+<div class="row form-group">
+  <div class="col-md-3 text-right">
+    <strong>Fecha de Inscripción</strong>
+  </div>
+  <div class="col-md-9">
+    <%=(l @swear.inscription_date).capitalize %>
+    de <%= configatron.inscription.starts_at %>
+    a <%= configatron.inscription.ends_at %>
+  </div>
+</div>
+
+<% if @inscription.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h3>La jura no se pudo grabar por los siguientes errores:</h3>
+    <ul>
+    <% @inscription.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= bootstrap_form_for(@inscription, layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9") do |f| %>
+  <%= hidden_field_tag :dni, @graduate.dni %>
+  <%= f.hidden_field :swear_id %>
+  <%= f.hidden_field :graduate_id %>
+  <%= f.collection_select :formula_id, @formulas, :id, :full_name,
+    label: "Fórmula de Jura", include_blank: true %>
+  <div class="col-md-9 col-md-offset-3">
+    <% @formulas.each do |formula| %>
+      <p class="help-block formula-block" id="formula-<%= formula.id %>" style="display: none">
+        <strong><%= formula.name %>:</strong> <%= formula.text %>
+      </p>
+    <% end %>
+  </div>
+  <%= f.email_field :email, label: "Correo electrónico" %>
+  <%= f.submit "Enviar", class: "btn btn-primary pull-right" %>
+<% end %>

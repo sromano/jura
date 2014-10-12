@@ -1,0 +1,16 @@
+<div class="header">
+  <h3 class="text-muted"> Graduados en condición de jurar </h3>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> Apellido </th>
+      <th> Nombre </th>
+      <th> Título </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "graduate", collection: @graduates %>
+  </tbody>
+</table>

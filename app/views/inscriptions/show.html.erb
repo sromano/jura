@@ -1,0 +1,111 @@
+<p class="lead hidden-print">
+  <strong> Paso 3: </strong> Presentá este certificado el día de la inscripción para confirmar tu cupo en la jura
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4> Constancia de Preinscripción a Jura de Graduados </h4>
+  </div>
+  <div class="panel-body">
+    <big>
+      <div class="row">
+        <div class="col-md-5">
+          DNI
+        </div>
+        <div class="col-md-7">
+          <%= @inscription.graduate.dni %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Nombre
+        </div>
+        <div class="col-md-7">
+          <%= @inscription.graduate.first_name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Apellido
+        </div>
+        <div class="col-md-7">
+          <%= @inscription.graduate.last_name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Título
+        </div>
+        <div class="col-md-7">
+          <%= @inscription.graduate.careers.map(&:name).join(", ") %>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <strong>Importante: </strong> El cupo para la jura se confirma asistiendo a la inscripción
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              Fecha de Inscripción
+            </div>
+            <div class="col-md-4">
+              <%=(l @inscription.swear.inscription_date).capitalize %>
+            </div>
+          </div>
+
+          <% configatron.inscription.intervals.each do |interval| %>
+            <div class="row">
+              <div class="col-md-8">
+                Apellidos que comienzan con letras de <%= interval[0] %> a <%= interval[1] %>
+              </div>
+              <div class="col-md-4">
+                <%= interval[2] %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row text-center">
+            <strong> Presentarse con DNI </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Fecha de Jura
+        </div>
+        <div class="col-md-7">
+          <%=(l @inscription.swear.swear_date).capitalize %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Graduado debe presentarse
+        </div>
+        <div class="col-md-7">
+          <%= configatron.swear.graduates_time %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          Acto de jura
+        </div>
+        <div class="col-md-7">
+          <%= configatron.swear.sware_time %>
+        </div>
+      </div>
+    </big>
+  </div>
+</div>
+
+
+<%= button_to "Imprimir constancia", "#", onclick: "window.print()", class: "btn btn-primary center-block hidden-print" %>

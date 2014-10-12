@@ -1,0 +1,27 @@
+<h2> Inscriptos jura <%=l @swear.swear_date %> </h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> Título </th>
+      <th> Apellido </th>
+      <th> Nombre </th>
+      <th> Fórmula </th>
+      <th> Email </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @inscriptions.empty? %>
+      <tr class="info">
+        <td colspan="6" class="text-muted text-center">
+          <em>No hay ningún inscripto todavía</em>
+        </td>
+      </tr>
+    <% else %>
+       <%= render partial: "/inscriptions/inscription", collection: @inscriptions %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to "Bajar planilla", "#", onclick: "window.print()", class: "btn btn-primary center-block hidden-print" %>

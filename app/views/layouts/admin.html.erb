@@ -1,0 +1,12 @@
+<% content_for :header do %>
+<div class="header hidden-print">
+  <ul class="nav nav-pills pull-right">
+    <%= nav_link "Carga Graduados", graduates_upload_path %>
+    <%= nav_link "Nueva Jura", new_swear_path %>
+    <%= nav_link "Juras", swears_path %>
+    <li><%= link_to('Salir', destroy_operator_session_path, :method => :delete) %></li>
+  </ul>
+  <h3 class="text-muted">Administración</h3>
+</div>
+<% end %>
+<%= render template: "layouts/application" %>

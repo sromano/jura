@@ -1,0 +1,17 @@
+<p class="lead">
+  <strong> Paso 1: </strong> Verficá que tengas un título en condiciones de ser jurado
+</p>
+<%= bootstrap_form_tag(url: new_inscription_path, layout: :inline) do |f| %>
+  <%= f.text_field :dni, hide_label: true, placeholder:"Ingresá tu DNI", autofocus: true, value: params[:dni] %>
+  <%= f.submit "Verificar", class: "btn btn-primary" %>
+<% end %>
+<% if @no_title %>
+  <strong class="text-danger">
+    <span class="glyphicon glyphicon-remove"></span>
+    No tenés un título en condiciones de ser jurado
+  </strong>
+
+  <div class="top-margin">
+    <p> Recordá que los diplomas para estar en condiciones de ser jurados deben estar firmados por las autoridades y legalizados por el Ministerio de Educación</p>
+  </div>
+<%end%>
