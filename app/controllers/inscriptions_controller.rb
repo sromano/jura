@@ -1,3 +1,4 @@
+# encoding: utf-8
 class InscriptionsController < ApplicationController
   layout "inscriptions"
   before_filter :load_swear, only: [:verify,:new, :create]
