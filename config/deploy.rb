@@ -66,6 +66,7 @@ role :db,  LINODE_SERVER_HOSTNAME, :primary => true
 after 'deploy:update_code' do
   # Setup Configuration
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "cp #{shared_path}/config/secrets.yml #{release_path}/config/secrets.yml"
   run "cp #{shared_path}/config/initializers/devise.rb #{release_path}/config/initializers/devise.rb"
 
   # Compile Assets

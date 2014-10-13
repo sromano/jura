@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 careers = ["Analista Universitario de Computación",
 "Asistente de Investigación en Física",
 "Bachiller Universitario Cs.Atmósfera",
