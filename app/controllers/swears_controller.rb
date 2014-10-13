@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SwearsController < ApplicationController
   before_action :authenticate_operator!
   before_filter :load_swear, only:[:edit,:show,:update]

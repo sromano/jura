@@ -56,6 +56,7 @@ set :admin_runner,               "www-data"
 set :scm,        :git
 set :repository, GITHUB_REPOSITORY_NAME
 set :branch,     "master"
+set :keep_releases, 3
 
 # Roles
 role :app, LINODE_SERVER_HOSTNAME

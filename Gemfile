@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Capistrano
+gem 'therubyracer', :platforms => :ruby
 gem 'capistrano', '~> 2.15'
 gem 'net-ssh', '~>2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

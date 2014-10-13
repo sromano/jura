@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Formula < ActiveRecord::Base
   validates :name, :text, presence: true
   validates :name, uniqueness: true
