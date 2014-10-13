@@ -1,0 +1,10 @@
+<Row>
+  <Cell><Data ss:Type="Number"><%= inscription.order %></Data></Cell>
+  <Cell><Data ss:Type="String">
+    <%= inscription.graduate.careers.map(&:name).join(", ") %>
+  </Data></Cell>
+  <Cell><Data ss:Type="String"><%= inscription.graduate.last_name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= inscription.graduate.first_name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= inscription.formula.name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= inscription.email %></Data></Cell>
+</Row>

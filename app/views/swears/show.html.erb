@@ -24,4 +24,10 @@
   </tbody>
 </table>
 
-<%= button_to "Bajar planilla", "#", onclick: "window.print()", class: "btn btn-primary center-block hidden-print" %>
+
+<div class="row text-right">
+  <%= link_to "Guardar planilla", swear_path(format: :xls), class: "btn btn-primary hidden-print" %>
+
+  <%= link_to "Imprimir planilla", "#", onclick: "window.print()", class: "btn btn-default hidden-print" %>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">#</Data></Cell>
+        <Cell><Data ss:Type="String">Título</Data></Cell>
+        <Cell><Data ss:Type="String">Apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Fórmula</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+      </Row>
+      <%= render(partial: "/inscriptions/inscription",
+        collection: @inscriptions) unless @inscriptions.empty? %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> Título </th>
+      <th> Apellido </th>
+      <th> Nombre </th>
+      <th> Fórmula </th>
+      <th> Email </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @inscriptions.empty? %>
+      <tr class="info">
+        <td colspan="6" class="text-muted text-center">
+          <em>No hay ningún inscripto todavía</em>
+        </td>
+      </tr>
+    <% else %>
+       <%= render partial: "/inscriptions/inscription", collection: @inscriptions %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to "Bajar planilla", "#", onclick: "window.print()", class: "btn btn-primary center-block hidden-print" %>
