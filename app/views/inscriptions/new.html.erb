@@ -22,17 +22,6 @@
   </div>
 </div>
 
-<% if @inscription.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <h3>La jura no se pudo grabar por los siguientes errores:</h3>
-    <ul>
-    <% @inscription.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= bootstrap_form_for(@inscription, layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9") do |f| %>
   <%= hidden_field_tag :dni, @graduate.dni %>
   <%= f.hidden_field :swear_id %>
