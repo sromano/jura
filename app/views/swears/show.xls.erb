@@ -11,6 +11,7 @@
         <Cell><Data ss:Type="String">Título</Data></Cell>
         <Cell><Data ss:Type="String">Apellido</Data></Cell>
         <Cell><Data ss:Type="String">Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">DNI</Data></Cell>
         <Cell><Data ss:Type="String">Fórmula</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
       </Row>
@@ -19,29 +20,3 @@
     </Table>
   </Worksheet>
 </Workbook>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th> # </th>
-      <th> Título </th>
-      <th> Apellido </th>
-      <th> Nombre </th>
-      <th> Fórmula </th>
-      <th> Email </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @inscriptions.empty? %>
-      <tr class="info">
-        <td colspan="6" class="text-muted text-center">
-          <em>No hay ningún inscripto todavía</em>
-        </td>
-      </tr>
-    <% else %>
-       <%= render partial: "/inscriptions/inscription", collection: @inscriptions %>
-    <% end %>
-  </tbody>
-</table>
-
-<%= button_to "Bajar planilla", "#", onclick: "window.print()", class: "btn btn-primary center-block hidden-print" %>

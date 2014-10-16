@@ -1,9 +1,10 @@
 <% if @swear %>
-  <%if @swear.available? %>
+  <%if @swear.free_quota? %>
   <p class="lead">
       Está abierta la preinscripción para la jura de fecha
       <span class="important-date"> <%=l @swear.swear_date %> </span>
     </p>
+    <p> Podés verificar si tu título está en condiciones de ser jurado consultando <%= link_to "este listado", graduates_path %> </p>
     <div class="alert alert-warning" role="alert">
       <p> <strong>Importante:</strong> Recordá que una vez obtenido el cupo, tenés que presentarte a realizar la inscripción presencial el <%=l @swear.inscription_date, format: "%d de %B" %></p>
     </div>
@@ -18,4 +19,5 @@
 <% else %>
 <p class="lead">Todavía no hay una nueva fecha de jura disponible</p>
 <%= render partial: "reminder" %>
+<p> Podés verificar si tu título está en condiciones de ser jurado consultando <%= link_to "este listado", graduates_path %> </p>
 <% end %>

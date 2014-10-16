@@ -2,6 +2,10 @@
   <strong> Paso 2: </strong> Completá tus datos
 </p>
 
+<div class="alert alert-info" role="alert">
+  <p> Al hacer click en <strong>Confirmar Preinscripción</strong> visualizarás el comprobante en la pantalla, el cual será de presentación obligatoria el día de la inscripción.</p>
+</div>
+
 <div class="row form-group">
   <div class="col-md-3 text-right">
     <strong>Fecha de Jura</strong>
@@ -36,5 +40,5 @@
     <% end %>
   </div>
   <%= f.email_field :email, label: "Correo electrónico" %>
-  <%= f.submit "Enviar", class: "btn btn-primary pull-right" %>
+  <%= f.submit "Confirmar Preinscripción", class: "btn btn-primary pull-right" %>
 <% end %>

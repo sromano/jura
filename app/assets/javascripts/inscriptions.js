@@ -7,4 +7,5 @@ $(function() {
       $( "#formula-"+formula_id ).show();
     });
   }).change();
+ });
 });

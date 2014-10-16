@@ -5,8 +5,10 @@ class Swear < ActiveRecord::Base
 
   has_many :inscriptions
 
-  scope :open, ->{where("swear_date >= ?",Date.today)}
-  scope :available, ->{open.where(enabled:true).where("quota > used_quota")}
+  scope :default_order, ->{order("swear_date")}
+  scope :enabled, ->{where(enabled:true)}
+  scope :open, ->{enabled.where("swear_date >= ?",Date.today)}
+  scope :available, ->{open.enabled.where("quota > used_quota")}
 
   def initialize(attributes={})
     super
@@ -17,8 +19,20 @@ class Swear < ActiveRecord::Base
     self.enabled && swear_date >= Date.today
   end
 
+  def status
+    if enabled?
+      free_quota? ? "Abierta" : "Abierta (sin cupo)"
+    else
+      "Cerrada"
+    end
+  end
+
+  def free_quota?
+    quota > used_quota
+  end
+
   def available?
-    enabled? && quota > used_quota
+    enabled? && free_quota?
   end
 
   def inscription_date_before_swear

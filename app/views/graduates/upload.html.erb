@@ -1,7 +1,7 @@
 <div class="alert alert-info" role="alert">
   <ol>
   <li> El archivo debe ser de extensión <strong>.xlsx</strong> con las siguientes columnas: Apellido, Nombre, Número de Documento y Carrera.</li>
-  <li> La carga de un nuevo archivo deshabilita a los graduados anteriores</li>
+  <li> La carga de un nuevo archivo deshabilita a los graduados anteriores. Por ese motivo, no debe hacerse cuando haya una inscripción abierta</li>
 </div>
 
 <%= form_tag({action: "do_upload"}, {multipart: true}) do %>

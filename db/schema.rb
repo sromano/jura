@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141010203257) do
   create_table "formulas", force: true do |t|
     t.string   "name"
     t.text     "text"
+    t.integer  "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

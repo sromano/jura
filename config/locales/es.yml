@@ -40,9 +40,9 @@ es:
     - viernes
     - sábado
     formats:
-      default: ! '%B %d, %Y'
+      default: ! '%d de %B de %Y'
       long: ! '%A, %d de %B de %Y'
-      short: ! '%d de %b'
+      short: ! '%d de %B'
     month_names:
     -
     - enero

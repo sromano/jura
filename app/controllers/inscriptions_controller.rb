@@ -1,12 +1,9 @@
 # encoding: utf-8
 class InscriptionsController < ApplicationController
   layout "inscriptions"
-  before_filter :load_swear, only: [:verify,:new, :create]
-  before_filter :load_graduate, :load_formulas, :check_registered, only: [:new, :create]
-
-  def index
-    @swear = Swear.open.first
-  end
+  before_filter :load_graduate, :load_formulas, only: [:new, :create]
+  before_filter :load_swear, only: [:index, :verify,:new, :create]
+  before_filter :check_quota, only: [:verify, :new, :create]
 
   def verify
     @no_title = params[:no_title].present?
@@ -14,7 +11,8 @@ class InscriptionsController < ApplicationController
 
   def show
     @inscription = Inscription.find(params[:id])
-    if @inscription.expired?
+    if @inscription.closed?
+      flash[:error] = "Estás inscripto para una jura que ya ha sido realizada"
       redirect_to root_path
     end
   rescue ActiveRecord::RecordNotFound
@@ -47,11 +45,7 @@ class InscriptionsController < ApplicationController
   end
 
   def load_swear
-    @swear = Swear.available.first
-    unless @swear
-      flash[:error] = "Lo sentimos, ya no hay más cupos libres para la jura"
-      redirect_to root_path
-    end
+    @swear = Swear.open.default_order.first
   end
 
   def load_graduate
@@ -59,11 +53,17 @@ class InscriptionsController < ApplicationController
     unless @graduate
       redirect_to verify_inscriptions_path(no_title:true, dni: params[:dni])
     end
+
+    if @inscription = @graduate.inscription
+      flash[:success] = "Ya estás inscripto para una jura"
+      redirect_to @inscription
+    end
   end
 
-  def check_registered
-    if @inscription = @swear.inscriptions.where(graduate_id: @graduate.id).first
-      redirect_to @inscription
+  def check_quota
+    if @swear.nil? || !@swear.free_quota?
+      flash[:error] = "Lo sentimos, ya no hay más cupos libres para la jura"
+      redirect_to root_path
     end
   end
 end

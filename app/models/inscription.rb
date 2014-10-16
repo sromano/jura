@@ -4,14 +4,18 @@ class Inscription < ActiveRecord::Base
   belongs_to :graduate, -> { unscope(where: :deleted_at) }
 
   validates :order, :swear, :formula_id, :formula, :graduate, presence: true
-  validates :order, :graduate_id, uniqueness: {scope: :swear_id }
-
+  validates :graduate_id, uniqueness: true
+  validates :order, uniqueness: {scope: :swear_id}
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, allow_nil:true}
 
   before_validation :set_order
 
-  def expired?
+  def closed?
     swear.swear_date < Date.today
+  end
+
+  def expired?
+    Time.now > expires_at
   end
 
   def set_order

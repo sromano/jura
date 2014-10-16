@@ -1,9 +1,9 @@
 <tr>
-  <td><%=l swear.inscription_date %> </td>
-  <td><%=l swear.swear_date %> </td>
+  <td><%=l swear.inscription_date, format:"%d de %b de %Y" %> </td>
+  <td><%=l swear.swear_date, format:"%d de %b de %Y" %> </td>
   <td><%= swear.quota %> </td>
   <td><%= swear.used_quota %> </td>
-  <td><%= swear.enabled? ? "Abierta" : "Cerrada" %> </td>
+  <td><%= swear.status %> </td>
   <td><%= link_to "Editar", edit_swear_path(swear)%></td>
   <td><%= link_to "Ver inscriptos", swear_path(swear)%></td>
 </tr>

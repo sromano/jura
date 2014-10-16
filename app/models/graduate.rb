@@ -5,7 +5,7 @@ class Graduate < ActiveRecord::Base
   validate :at_least_one_career
   #Los DNIs con menos números vienen con 0
   validates :dni, length: { in: 8..10 }, uniqueness_without_deleted: true
-  has_many :inscriptions
+  has_one :inscription
 
   scope :not_deleted, ->{where(deleted_at:nil)}
   scope :with_dni, ->(dni){where(dni:fix_dni(dni))}
@@ -19,6 +19,6 @@ class Graduate < ActiveRecord::Base
   end
 
   def self.fix_dni(dni)
-    dni.rjust(8,'0')
+    dni.to_s.rjust(8,'0')
   end
 end
