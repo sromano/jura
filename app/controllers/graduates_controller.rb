@@ -3,7 +3,7 @@ class GraduatesController < ApplicationController
   layout "admin", only: [:upload]
 
   def index
-    @graduates = Graduate.order("last_name,first_name").all
+    @graduates = Graduate.not_deleted.order("last_name,first_name").all
   end
 
   def do_upload

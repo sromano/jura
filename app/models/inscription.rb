@@ -1,7 +1,7 @@
 class Inscription < ActiveRecord::Base
   belongs_to :swear
   belongs_to :formula
-  belongs_to :graduate
+  belongs_to :graduate, -> { unscope(where: :deleted_at) }
 
   validates :order, :swear, :formula_id, :formula, :graduate, presence: true
   validates :order, :graduate_id, uniqueness: {scope: :swear_id }

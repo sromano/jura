@@ -11,7 +11,7 @@ class SpreadsheetImporter
   def process
     xls = Roo::Spreadsheet.open(file.path, extension: :xlsx)
 
-    #Delete all gradautes
+    #Soft delete all gradautes
     Graduate.update_all(deleted_at: Time.now)
 
     skip_first_row = true
@@ -29,7 +29,7 @@ class SpreadsheetImporter
 
   private
   def process_row(row)
-    g = Graduate.where(dni:row[2]).first_or_initialize
+    g = Graduate.not_deleted.where(dni:row[2]).first_or_initialize
     g.last_name = row[0]
     g.first_name = row[1]
     g.career_ids ||= []

@@ -1,5 +1,4 @@
 class Graduate < ActiveRecord::Base
-  acts_as_paranoid
   serialize :career_ids, Array
 
   validates :first_name, :last_name, :dni, :career_ids, presence: true
@@ -7,6 +6,8 @@ class Graduate < ActiveRecord::Base
   #Los DNIs con menos números vienen con 0
   validates :dni, length: { is: 8 }, uniqueness_without_deleted: true
   has_many :inscriptions
+
+  scope :not_deleted, ->{where(deleted_at:nil)}
 
   def careers
     Career.find_by_ids(career_ids)
