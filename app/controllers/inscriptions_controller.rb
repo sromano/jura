@@ -55,7 +55,7 @@ class InscriptionsController < ApplicationController
   end
 
   def load_graduate
-    @graduate = Graduate.not_deleted.where(dni:params[:dni]).first
+    @graduate = Graduate.not_deleted.with_dni(params[:dni]).first
     unless @graduate
       redirect_to verify_inscriptions_path(no_title:true, dni: params[:dni])
     end
