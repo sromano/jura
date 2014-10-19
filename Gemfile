@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 # Capistrano
-gem 'therubyracer', :platforms => :ruby
 gem 'capistrano', '~> 2.15'
 gem 'net-ssh', '~>2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -47,7 +46,8 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
