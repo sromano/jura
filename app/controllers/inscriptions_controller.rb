@@ -52,6 +52,7 @@ class InscriptionsController < ApplicationController
     @graduate = Graduate.not_deleted.with_dni(params[:dni]).first
     unless @graduate
       redirect_to verify_inscriptions_path(no_title:true, dni: params[:dni])
+      return
     end
 
     if @inscription = @graduate.inscription
