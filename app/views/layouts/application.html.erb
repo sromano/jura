@@ -17,13 +17,13 @@
     <div class="main">
 
       <% unless flash[:error].blank? %>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger hidden-print" role="alert">
           <strong>Error: </strong> <%= flash[:error] %>
         </div>
       <% end %>
 
       <% unless flash[:success].blank? %>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success hidden-print" role="alert">
           <%= flash[:success] %>
         </div>
       <% end %>
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="footer">
+  <div class="footer hidden-print">
     <p class="text-muted">Secretaría Académica - Dirección de Alumnos y Graduados <br/> Universidad de Buenos Aires - Facultad de Ciencias Exactas y Naturales </p>
   </div>
 </body>
