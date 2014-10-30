@@ -6,7 +6,12 @@
     </p>
     <p> Podés verificar si tu título está en condiciones de ser jurado consultando <%= link_to "este listado", graduates_path %> </p>
     <div class="alert alert-warning" role="alert">
-      <p> <strong>Importante:</strong> Recordá que una vez obtenido el cupo, tenés que presentarte a realizar la inscripción presencial el <%=l @swear.inscription_date, format: "%d de %B" %></p>
+      <strong>Importante:</strong>
+      <ul>
+      <li> Una vez obtenido el cupo, tenés que presentarte a realizar la inscripción presencial el <%=l @swear.inscription_date, format: "%d de %B" %> en el horario que indique el comprobante</li>
+      <li> El sistema no permitirá darse de baja una vez obtenido un cupo para la jura</li>
+      <li> Leé atentamente la información publicada en <a href="<%= configatron.extra_info_url %>"> exactas.uba.ar > Graduados > Juras </a> </li>
+      </ul>
     </div>
     <%= link_to "Iniciar preinscripción", verify_inscriptions_path, class: "btn btn-primary pull-right" %>
   <%else %>
@@ -14,10 +19,8 @@
       El cupo <strong>está agotado</strong> para la jura de fecha
       <span class="important-date"> <%=l @swear.swear_date %> </span>
     </p>
-    <%= render partial: "reminder" %>
+    <p> Próximamente se publicará una nueva fecha de jura en <a href="<%= configatron.extra_info_url %>"> exactas.uba.ar > Graduados > Juras </a> </p>
   <%end%>
 <% else %>
-<p class="lead">Todavía no hay una nueva fecha de jura disponible</p>
-<%= render partial: "reminder" %>
-<p> Podés verificar si tu título está en condiciones de ser jurado consultando <%= link_to "este listado", graduates_path %> </p>
+<p>Próximamente se publicará una nueva fecha de jura en <a href="<%= configatron.extra_info_url %>"> exactas.uba.ar > Graduados > Juras </a></p>
 <% end %>

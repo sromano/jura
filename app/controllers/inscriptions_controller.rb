@@ -63,7 +63,7 @@ class InscriptionsController < ApplicationController
 
   def check_quota
     if @swear.nil? || !@swear.free_quota?
-      flash[:error] = "Lo sentimos, ya no hay más cupos libres para la jura"
+      flash[:error] = "ya no hay más cupos libres para la jura"
       redirect_to root_path
     end
   end

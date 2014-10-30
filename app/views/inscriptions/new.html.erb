@@ -3,7 +3,7 @@
 </p>
 
 <div class="alert alert-info" role="alert">
-  <p> Al hacer click en <strong>Confirmar Preinscripción</strong> visualizarás el comprobante en la pantalla, el cual será de presentación obligatoria el día de la inscripción.</p>
+  <p> Al hacer click en <strong>Confirmar Preinscripción</strong> (si queda cupo disponible) visualizarás el comprobante en la pantalla, el cual será de presentación obligatoria el día de la inscripción.</p>
 </div>
 
 <div class="row form-group">
@@ -15,15 +15,25 @@
   </div>
 </div>
 
-<div class="row form-group">
-  <div class="col-md-3 text-right">
-    <strong>Fecha de Inscripción</strong>
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-3 text-right">
+      <strong>Fecha de Inscripción</strong>
+    </div>
+    <div class="col-md-9">
+      <%=(l @swear.inscription_date).capitalize %>
+      de <%= configatron.inscription.starts_at %>
+      a <%= configatron.inscription.ends_at %>
+    </div>
   </div>
-  <div class="col-md-9">
-    <%=(l @swear.inscription_date).capitalize %>
-    de <%= configatron.inscription.starts_at %>
-    a <%= configatron.inscription.ends_at %>
-  </div>
+
+  <% configatron.inscription.intervals.each do |interval| %>
+    <div class="row">
+      <div class="col-md-9 col-md-offset-3">
+        Apellidos que comienzan con letras de <%= interval[0] %> a <%= interval[1] %>: <%= interval[2] %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= bootstrap_form_for(@inscription, layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9") do |f| %>
