@@ -1,0 +1,24 @@
+
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+
+  <h2 class="form-signin-heading">Cambiar contraseña</h2>
+
+
+  <div class="form-group">
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control",
+     label: "Contraseña actual:" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, autocomplete: "off", class: "form-control",
+     label: "Nueva contraseña:" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control",
+     label: "Confirmar nueva contraseña:" %>
+  </div>
+
+  <div> <%= f.submit "Cambiar contraseña", class: "btn btn-lg btn-primary pull-right" %></div>
+<% end %>

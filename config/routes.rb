@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :operators, path: "operadores", path_names: { sign_in: 'inicio', sign_out: 'salir'}
+  devise_for :operators, path: "operadores", path_names: { sign_in: 'inicio',
+    sign_out: 'salir'}, only: :session
+
+  devise_scope :operator do
+    get "operadores/editar", to: "devise/registrations#edit", as: "edit_operator_registration"
+    patch "operadores", to: "devise/registrations#update", as: "operator_registration"
+    put "operadores", to: "devise/registrations#update"
+  end
 
   #Rutas en Español
   get 'graduados', to: 'graduates#index', as: :graduates
