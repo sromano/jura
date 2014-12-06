@@ -6,8 +6,8 @@ configatron.swear.sware_time = "15hs"
 configatron.swear.quota = 70
 #Horarios de inscripción según letra
 configatron.inscription.intervals = []
-configatron.inscription.intervals << ["A","J","11hs"]
-configatron.inscription.intervals << ["K","Z","12hs"]
+configatron.inscription.intervals << ["A","J","11 a 11:30hs"]
+configatron.inscription.intervals << ["K","Z","12 a 12:30hs"]
 #Horario inscripción
 configatron.inscription.starts_at = "11:00"
 configatron.inscription.ends_at = "13:00"

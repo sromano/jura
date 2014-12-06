@@ -4,16 +4,22 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+    <Style ss:ID="s62">
+      <NumberFormat ss:Format="Short Date"/>
+    </Style>
+  </Styles>
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
         <Cell><Data ss:Type="String">#</Data></Cell>
-        <Cell><Data ss:Type="String">Título</Data></Cell>
-        <Cell><Data ss:Type="String">Apellido</Data></Cell>
-        <Cell><Data ss:Type="String">Nombre</Data></Cell>
-        <Cell><Data ss:Type="String">DNI</Data></Cell>
-        <Cell><Data ss:Type="String">Fórmula</Data></Cell>
-        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">título</Data></Cell>
+        <Cell><Data ss:Type="String">apellido</Data></Cell>
+        <Cell><Data ss:Type="String">nombre</Data></Cell>
+        <Cell><Data ss:Type="String">nro_docum</Data></Cell>
+        <Cell><Data ss:Type="String">texto</Data></Cell>
+        <Cell><Data ss:Type="String">email</Data></Cell>
+        <Cell><Data ss:Type="String">fec_jur</Data></Cell>
       </Row>
       <%= render(partial: "/inscriptions/inscription",
         collection: @inscriptions) unless @inscriptions.empty? %>
