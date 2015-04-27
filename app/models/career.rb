@@ -1,5 +1,6 @@
 class Career < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
+  after_save :clean_careers_cache
 
   #We keep them all in memory to not query it every time
   def self.all(force_reload=false)
@@ -16,4 +17,11 @@ class Career < ActiveRecord::Base
     career = all.find{|c| c.name.strip == name}
     career || Career.create(name: name)
   end
+
+  private
+
+  def clean_careers_cache
+    @@careers = nil
+  end
+
 end
